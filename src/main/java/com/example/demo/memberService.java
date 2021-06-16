@@ -26,7 +26,7 @@ public class memberService {
     public  void update (member member)
     {
         if(repo.existsById(member.getKhojiId())) {
-            System.out.println(member);
+
             repo.deleteById(member.getKhojiId());
             repo.save(member);
         }
