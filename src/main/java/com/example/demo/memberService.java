@@ -1,5 +1,5 @@
 package com.example.demo;
-
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +25,15 @@ public class memberService {
 
     public  void update (member member)
     {
-        repo.save(member);
+        if(repo.existsById(member.getKhojiId())) {
+            System.out.println(member);
+            repo.deleteById(member.getKhojiId());
+            repo.save(member);
+        }
+        else
+        {
+            System.out.println("Not present");
+        }
     }
 
     public String get1(int id)
